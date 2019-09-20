@@ -26,6 +26,10 @@ def callback(event):
 		calen.previous_month()
 		calen.draw_text(calen.get_tabs())
 		calen.draw_rectangles()
+	if button_right.clickin((event.x, event.y)):
+		calen.next_month()
+		calen.draw_text(calen.get_tabs())
+		calen.draw_rectangles()
 
 
 canvas.bind("<Button-1>", callback)

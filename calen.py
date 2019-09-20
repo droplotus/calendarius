@@ -47,6 +47,21 @@ class Calen():
 
 		print (first, lastMonth)
 
+	def next_month(self):
+		self.delete_widgets()
+		today = date(self.year, self.month, self.days)
+		lastMonth = today + timedelta(days=1)
+		self.year = int(lastMonth.strftime("%Y"))
+		self.month = int(lastMonth.strftime("%m"))
+		self.days = monthrange(self.year, self.month)[1]
+		self.weekday = date(self.year, self.month, 1).weekday()
+		self.month_name = date(self.year, self.month, 1).strftime('%B')
+		self.rows = 1 
+		# Counting month rows (weeks)
+		for i in range(1, self.days+1):
+			if date(self.year, self.month, i).weekday() == 6:
+				self.rows += 1
+
 	def get_tabs(self):
 		tabs = 0
 		for i in range(self.weekday):
