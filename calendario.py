@@ -30,7 +30,12 @@ def callback(event):
 		calen.next_month()
 		calen.draw_text(calen.get_tabs())
 		calen.draw_rectangles()
-
+	if calen.clickin((event.x, event.y)):
+		dai = calen.getDaiByClick((clicking[1], clicking[0]))
+		if dai:
+			calen.resetDais()
+			dai.touched = True
+			canvas.itemconfig(dai.rectangle, fill="#43586d")
 
 canvas.bind("<Button-1>", callback)
 canvas.pack()

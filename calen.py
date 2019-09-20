@@ -6,6 +6,8 @@ import time
 
 class Calen():
 	def __init__(self, canvas, x, y):
+		self.x = x
+		self.y = y
 		self.rectangles = []
 		self.dais = []
 		self.canvas = canvas
@@ -30,6 +32,8 @@ class Calen():
 			self.canvas.delete(rect)
 		for temp in self.dais:
 			for dai in temp:
+				if dai == 0:
+					continue
 				self.canvas.delete(dai.string)
 				self.canvas.delete(dai.rectangle)
 		self.canvas.delete(self.text_month)
@@ -82,6 +86,7 @@ class Calen():
 			for j in range(self.cols):
 				if tabs>0:
 					tabs -= 1
+					temp.append(0)
 					continue
 				if gap == self.days+1:
 					break
@@ -100,3 +105,22 @@ class Calen():
 				temp.append(rectangle)
 				day += 1
 			self.rectangles.append(temp)
+
+	def clickin(self, p):
+		if p[0] > 11 and p[0] < 10 + self.x:
+			if p[1] > 71 and p[1] < 71 + self.y:
+				return True
+		return False
+	
+	def getDaiByClick(self, p):
+		if isinstance(self.dais[p[0]][p[1]], Dai):
+			return self.dais[p[0]][p[1]]
+
+	def resetDais(self):
+		for temp in self.dais:
+			for dai in temp:
+				if dai == 0:
+					continue
+				if dai.touched == True:
+					dai.touched = False
+					self.canvas.itemconfig(dai.rectangle, fill="#597692")
