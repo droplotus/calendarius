@@ -8,11 +8,10 @@ class Dai():
 		self.height = height
 		self.i = i
 		self.j = j
-		self.title = ""
-		self.text = ""
-		self.rectangle = self.canvas.create_rectangle(11 + j*self.width, 71 + i*self.height, 11 + j*self.width + self.width, 71 + i*self.height + self.height, fill="#597692")
-		self.string = self.canvas.create_text(38+j*width, 95+i*height, fill="#212c36", font="Arial 15", text=day)
-		print(day)
-
+		self.title = "Test Title"
+		self.text = "My dream is about something you will never understand"
+		self.rectangle = self.canvas.create_rectangle(11 + j*self.width, 51 + i*self.height, 11 + j*self.width + self.width, 51 + i*self.height + self.height, fill="#597692")
+		self.string = self.canvas.create_text(38+j*width, 75+i*height, fill="#212c36", font="Arial 15", text=day)
+		
 	def __repr__(self):
 		return str(self.day)

@@ -79,7 +79,7 @@ class Calen():
 		gap = 1
 		self.dais = []
 		temp = []
-		self.text_month = self.canvas.create_text(10, 50, fill="#161d24", font="Arial 25 bold", anchor="w", text=self.month_name)
+		self.text_month = self.canvas.create_text(10, 30, fill="#161d24", font="Arial 25 bold", anchor="w", text=self.month_name)
 		
 		for i in range(self.rows):
 			temp = []
@@ -94,14 +94,12 @@ class Calen():
 				gap += 1
 			self.dais.append(temp)
 
-		print(len(self.dais))
-
 	def draw_rectangles(self):
 		day = 1
 		for i in range(self.cols):
 			temp = []
 			for j in range(self.rows):
-				rectangle = self.canvas.create_rectangle(11 + i*self.width, 71 + j*self.height, 11 + i*self.width + self.width, 71 + j*self.height + self.height, outline="#212c36")
+				rectangle = self.canvas.create_rectangle(11 + i*self.width, 51 + j*self.height, 11 + i*self.width + self.width, 51 + j*self.height + self.height, outline="#212c36")
 				temp.append(rectangle)
 				day += 1
 			self.rectangles.append(temp)
@@ -113,8 +111,11 @@ class Calen():
 		return False
 	
 	def getDaiByClick(self, p):
-		if isinstance(self.dais[p[0]][p[1]], Dai):
-			return self.dais[p[0]][p[1]]
+		try:
+			if isinstance(self.dais[p[0]][p[1]], Dai):
+				return self.dais[p[0]][p[1]]
+		except IndexError:
+			return None
 
 	def resetDais(self):
 		for temp in self.dais:
