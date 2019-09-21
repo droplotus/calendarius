@@ -90,7 +90,7 @@ class Calen():
 					continue
 				if gap == self.days+1:
 					break
-				temp.append(Dai(self.canvas, gap, i, j, self.width, self.height))
+				temp.append(Dai(self.canvas, gap, i, j, self.width, self.height, date(self.year, self.month, gap).strftime("%d/%m/%Y")))
 				gap += 1
 			self.dais.append(temp)
 
@@ -106,7 +106,7 @@ class Calen():
 
 	def clickin(self, p):
 		if p[0] > 11 and p[0] < 10 + self.x:
-			if p[1] > 71 and p[1] < 71 + self.y:
+			if p[1] > 51 and p[1] < 51 + self.y:
 				return True
 		return False
 	
