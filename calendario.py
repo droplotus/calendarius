@@ -40,6 +40,9 @@ def buttonclicked():
 	datee = date(year, month, day)
 
 	datee = datee.strftime("%d/%m/%Y")
+	for i in range(len(dreams)-1, -1, -1):
+		if dreams[i].data == datee:
+			dreams.remove(dreams[i])	
 
 	dreams.append(Dream(datee, content))
 	writeFile()
@@ -78,7 +81,7 @@ def readFile():
 					day.text = dream.content
 
 def writeFile():
-	f = open("dreams.txt","w+")
+	f = open("dreams.txt","w")
 	for dream in dreams:
 		f.write(str(dream.data)+"\n")
 		f.write(str(dream.content)+"\n")
