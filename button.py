@@ -1,5 +1,5 @@
 
-class Button():
+class Bbutton():
 	def __init__(self, canvas, x, y, text, width, height):
 		self.x = x
 		self.y = y
