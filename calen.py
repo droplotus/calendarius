@@ -17,6 +17,7 @@ class Calen():
 		self.weekday = date(self.year, self.month, 1).weekday()
 		self.month_name = datetime.now().strftime('%B')
 		self.text_month = ""
+		self.text_year = ""
 		self.cols = 7
 		self.rows = 1 
 		# Counting month rows (weeks)
@@ -37,6 +38,7 @@ class Calen():
 				self.canvas.delete(dai.string)
 				self.canvas.delete(dai.rectangle)
 		self.canvas.delete(self.text_month)
+		self.canvas.delete(self.text_year)
 
 	def previous_month(self):
 		self.delete_widgets()
@@ -80,7 +82,7 @@ class Calen():
 		self.dais = []
 		temp = []
 		self.text_month = self.canvas.create_text(10, 30, fill="#161d24", font="Arial 25 bold", anchor="w", text=self.month_name)
-		
+		self.text_year = self.canvas.create_text(250, 35, fill="#161d24", font="Arial 15 bold", anchor="w", text=self.year)
 		for i in range(self.rows):
 			temp = []
 			for j in range(self.cols):
